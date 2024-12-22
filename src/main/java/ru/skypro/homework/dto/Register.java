@@ -10,5 +10,5 @@ public class Register {
     private String firstName;
     private String lastName;
     private String phone;
-    private Role role;
+    private String role;
 }
