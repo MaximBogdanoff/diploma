@@ -4,12 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.skypro.homework.dto.Ad;
-import ru.skypro.homework.dto.CreateOrUpdateAd;
+import ru.skypro.homework.dto.AdDTO;
+import ru.skypro.homework.dto.CreateOrUpdateAdDTO;
 
 import java.util.List;
 
-import ru.skypro.homework.dto.ExtendedAd;
+import ru.skypro.homework.dto.ExtendedAdDTO;
 import ru.skypro.homework.service.AdService;
 
 @CrossOrigin(value = "http://localhost:3000")
@@ -19,28 +19,28 @@ public class AdController {
 
     // Получение всех объявлений
     @GetMapping
-    public ResponseEntity<List<Ad>> getAllAds() {
+    public ResponseEntity<List<AdDTO>> getAllAds() {
         return ResponseEntity.ok(AdService.getAllAds());
     }
 
     // Добавление объявления
     @PostMapping
-    public ResponseEntity<Ad> addAd(@RequestPart("properties") CreateOrUpdateAd createOrUpdateAd,
-                                    @RequestPart("image") MultipartFile image) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(AdService.addAd(createOrUpdateAd, image));
+    public ResponseEntity<AdDTO> addAd(@RequestPart("properties") CreateOrUpdateAdDTO createOrUpdateAdDTO,
+                                       @RequestPart("image") MultipartFile image) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(AdService.addAd(createOrUpdateAdDTO, image));
     }
 
     // Получение информации об объявлении
     @GetMapping("/{id}")
-    public ResponseEntity<ExtendedAd> getAd(@PathVariable Integer id) {
+    public ResponseEntity<ExtendedAdDTO> getAd(@PathVariable Integer id) {
         return ResponseEntity.ok(AdService.getAdById(id));
     }
 
     // Обновление информации об объявлении
     @PatchMapping("/{id}")
-    public ResponseEntity<Ad> updateAds(@PathVariable Integer id,
-                                        @RequestBody CreateOrUpdateAd createOrUpdateAd) {
-        return ResponseEntity.ok(AdService.updateAd(id, createOrUpdateAd));
+    public ResponseEntity<AdDTO> updateAds(@PathVariable Integer id,
+                                           @RequestBody CreateOrUpdateAdDTO createOrUpdateAdDTO) {
+        return ResponseEntity.ok(AdService.updateAd(id, createOrUpdateAdDTO));
     }
 
     // Удаление объявления
@@ -52,7 +52,7 @@ public class AdController {
 
     // Получение объявлений авторизованного пользователя
     @GetMapping("/me")
-    public ResponseEntity<List<Ad>> getAdsMe() {
+    public ResponseEntity<List<AdDTO>> getAdsMe() {
         return ResponseEntity.ok(AdService.getAdsByCurrentUser());
     }
 
