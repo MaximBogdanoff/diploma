@@ -1,13 +1,27 @@
 package ru.skypro.homework.dto;
 
-import java.time.LocalDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
+@Data
 public class Comment {
-    private Integer author; // ID автора комментария
-    private String authorImage; // Ссылка на аватар автора комментария
-    private String authorFirstName; // Имя создателя комментария
-    private Integer createdAt; // Дата создания комментария
-    private Integer pk;// id комментария
-    private String text;//Текст комментария
-}
 
+    @Schema(description = "id автора объявления")
+    private int author;
+
+    @Schema(description = "ссылка на аватар автора объявления")
+    private String authorImage;
+
+    @Schema(description = "имя создателя комментария")
+    private String authorFirstName;
+
+    @Schema(description = "дата и время создания комментария в миллисекундах с 00:00:00 01.01.1970")
+    private long createdAt;
+
+    @Schema(description = "id комментария")
+    private int pk;
+
+    @Schema(description = "текст комментария")
+    private String text;
+
+}
