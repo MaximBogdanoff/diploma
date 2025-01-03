@@ -1,5 +1,5 @@
 -- liquibase formatted sql
--- changeset darya:1
+-- changeset Максим:1
 CREATE TABLE IF NOT EXISTS users(
     id SERIAL NOT NULL,
     email VARCHAR(32) UNIQUE NOT NULL,
