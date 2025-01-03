@@ -1,5 +1,5 @@
 -- liquibase formatted sql
-
+-- changeset darya:1
 CREATE TABLE IF NOT EXISTS ads(
     id SERIAL NOT NULL,
     price INT NOT NULL,

@@ -1,5 +1,5 @@
 -- liquibase formatted sql
-
+-- changeset darya:1
 CREATE TABLE IF NOT EXISTS comments(
     id SERIAL NOT NULL,
     created_at BIGINT,
