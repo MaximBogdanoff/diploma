@@ -1,11 +1,24 @@
 package ru.skypro.homework.dto;
 
-import java.time.LocalDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
+@Data
 public class Ad {
-    private Integer pk; // ID объявления
-    private Integer author; // Заголовок объявления
-    private String image; // Описание объявления
-    private Integer price; // Цена объявления
-    private String title; // Категория
+
+    @Schema(description = "id автора объявления")
+    private int author;
+
+    @Schema(description = "ссылка на картинку объявления")
+    private String image;
+
+    @Schema(description = "id объявления")
+    private int pk;
+
+    @Schema(description = "цена объявления")
+    private int price;
+
+    @Schema(description = "заголовок объявления")
+    private String title;
+
 }
